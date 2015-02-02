@@ -814,7 +814,7 @@ class adLDAP {
         if ($attributes["address_state"]){ $mod["st"][0]=$attributes["address_state"]; }
         if ($attributes["address_street"]){ $mod["streetAddress"][0]=$attributes["address_street"]; }
         if ($attributes["company"]){ $mod["company"][0]=$attributes["company"]; }
-        if ($attributes["change_password"]){ $mod["pwdLastSet"][0]=0; }
+        if (isset($attributes["change_password"])){ $mod["pwdLastSet"][0]= $attributes["change_password"] == 0 ? -1 : 0; }
         if ($attributes["department"]){ $mod["department"][0]=$attributes["department"]; }
         if ($attributes["description"]){ $mod["description"][0]=$attributes["description"]; }
         if ($attributes["display_name"]){ $mod["displayName"][0]=$attributes["display_name"]; }
